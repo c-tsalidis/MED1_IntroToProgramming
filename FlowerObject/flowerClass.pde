@@ -80,4 +80,13 @@ class Flower
    // x += speed * value;
   }
   
+  boolean overlaps( Flower f)
+  {
+    float d = dist(x, y, f.x, f.y);
+    if(d < r+f.r)
+        return true;
+    else
+      return false;
+  }
+  
 }

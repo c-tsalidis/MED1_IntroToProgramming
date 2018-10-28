@@ -1,11 +1,20 @@
+/*
 Flower myFlower1;
 Flower myFlower2;
 Flower myFlower3;
 Flower myFlower4;
+*/
+int n_rows = 6, n_columns=6;
 
-Flower[] flowersArray = new Flower[12]; // an array of flowers
-boolean[] show = {false, false, false, false, false,  false, false, false, false, false, false, false}; // to check if the flowers should be displayed or not
-  
+Flower [] FlowerRow = new Flower[n_rows];
+Flower [][] FlowerGarden = new Flower[n_rows][n_columns];
+int n_flowers = FlowerRow.length;
+
+/*
+Flower[] flowersArray = new Flower[14]; // an array of flowers
+boolean[] show = {false, false, false, false, false,  false, false, false, false, false, false, false, true, true}; // to check if the flowers should be displayed or not
+  */
+  /*
   int[] count = {0,1,2,3,4,5,6,7,8,9,10,11};
   int index = 0;
   int aux0 = 0;
@@ -17,6 +26,7 @@ boolean[] show = {false, false, false, false, false,  false, false, false, false
   int yHitbox1 = 0;
   int xHitbox2 = 400;
   int yHitbox2 = 0;
+*/
 
 void setup()
 {
@@ -30,6 +40,8 @@ void setup()
   int _x = width / 2;
   int _y = height / 2;
   int _pc = flowerColor;
+
+  float fSpace = width / n_flowers;
   
   
   int _xSpeed = 3; // extra parameter for the constructor of class Flower
@@ -37,6 +49,7 @@ void setup()
   int _xDirection = 1;
   int _yDirection = 1;
 
+  /*
   
   // turn on
   rect(xHitbox0, yHitbox0, 200, 200);
@@ -62,6 +75,9 @@ void setup()
   flowersArray[9] = new Flower(_r1, _petals, _x + 200, _y, _pc, _xSpeed + 7, _ySpeed + 7, _xDirection, _yDirection);
   flowersArray[10] = new Flower(_r1, _petals, _x + 200, _y, _pc / 3, _xSpeed + 8, _ySpeed + 8, _xDirection, _yDirection);
   flowersArray[11] = new Flower(_r1, _petals, _x + 200, _y, _pc / 5, _xSpeed + 9, _ySpeed + 9, _xDirection, _yDirection);
+  flowersArray[12] = new Flower(_r1, _petals, _x + 200, _y, #0000FF, _xSpeed + 10, _ySpeed + 10, _xDirection, _yDirection);
+  flowersArray[13] = new Flower(_r1, _petals, _x + 200, _y, #FF0000, _xSpeed + 12, _ySpeed + 12, _xDirection, _yDirection);
+  
   
  // flowersArray[0] = new Flower(_r1, _petals, _x, _y, _pc, _xSpeed, _ySpeed, _xDirection, _yDirection); // overloading, this time the flower also has speed
  
@@ -74,7 +90,9 @@ void setup()
 void draw()
 {
  // background(#43AF76);
-  
+ 
+ flowersArray[12].display();
+ flowersArray[13].display();  
   if(mouseX < 200 && mouseY < 200)
   {
     
@@ -166,10 +184,42 @@ void draw()
   
   for(int i=0; i < flowersArray.length; i++)
   {
+    int index = 1;
     if(show[i] == true)
     {
       flowersArray[i].display();
     }
+    if(flowersArray[i].overlaps(flowersArray[index]))
+    {
+      background(255);
+    }
+    index++;
   }
+  
+  */
+  int separation = width / 6 / 2;
+  int sepHeight = height / n_columns / 2;
+  for(int i = 0; i < n_rows;i = i+1)
+  {
+   for(int j=i; j < n_columns; j++)
+   {
+     FlowerGarden[i][j] = new Flower(_r1, _petals, separation, _y, color(random(0, 255), random(0, 255), random(0, 255)));
+     FlowerGarden[i][j] = new Flower(_r1, _petals, _x, sepHeight, color(random(0, 255), random(0, 255), random(0, 255)));
+     FlowerGarden[i][j].display();  
+     separation += width / 6;
+     sepHeight += height / n_columns;
+   }
+}
+  /*
+  for(int i = 0; i < FlowerGarden.length;i = i+1)
+  {
+    for(int j=0;j<FlowerGarden.length;j++)
+    {
+     FlowerGarden[i][j] = new Flower(_r1, _petals, fSpace*i, _y, _pc);
+     FlowerGarden[i][j].display();  
+     separation += 200;
+    }
+  }
+  */
   
 }
