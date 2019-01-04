@@ -30,10 +30,10 @@ class Particle
     noStroke();
     fill(r, g, b, 100);
     ellipse(x, y, size, size);
-    ellipse(x+size, y, size, size);
-    ellipse(x-size, y, size, size);
-    ellipse(x, y+size, size, size);
-    ellipse(x, y-size, size, size);
+    ellipse(x+size, y, size / 2, size);
+    ellipse(x-size, y, size / 2, size);
+    ellipse(x, y+size, size / 2, size);
+    ellipse(x, y-size, size / 2, size);
   }
   
 }

@@ -1,7 +1,7 @@
 // Algorithms
 
 
-int num = 75;
+int num = 200;
 int[] x = new int[num];
 int[] y = new int[num];
 
@@ -22,7 +22,7 @@ int b;
 
 void setup()
 {
-  size(1000, 1000);
+  size(1400, 1000, P2D);
 }
 /*
 void draw()
@@ -83,7 +83,7 @@ void draw()
     {
       _particleColor = 255;
     }
-    particle[i] = new Particle(x[i], y[i], random(25, 75), random(255), random(255), random(255));
+    particle[i] = new Particle(x[i], y[i], random(10, 25), random(255), random(255), random(255));
   }
   /*
   for(int i =0; i< sizes.length - 1; i++)
