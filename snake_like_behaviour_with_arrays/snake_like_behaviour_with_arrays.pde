@@ -1,11 +1,12 @@
 // Algorithms
 
 
-int num = 200;
+int num = 50;
 int[] x = new int[num];
 int[] y = new int[num];
 
 Particle[] particle = new Particle[num];
+color [] particleColor = new color[num];
 
 int indexPosition = 0;
 
@@ -13,7 +14,8 @@ int[] sizes = new int[num];
 int size = 75;
 
 float randomSize = random(25, 75);
-float _particleColor = random(255);
+// float _particleColor = random(255);
+color _particleColor;
 
 int r;
 int g;
@@ -22,7 +24,8 @@ int b;
 
 void setup()
 {
-  size(1400, 1000, P2D);
+  // size(1400, 1000, P2D);
+  size(1400, 1000);
 }
 /*
 void draw()
@@ -44,10 +47,10 @@ void draw()
 void draw()
 {
 
-  float _size = _particleColor;
+ // float _size = _particleColor;
   indexPosition += 1;
 
-  background(0);
+  background(255);
 
   // fill(random(100, 255), 100);
 
@@ -63,27 +66,34 @@ void draw()
   x[indexPosition] = mouseX;
   y[indexPosition] = mouseY;
 
-
   for (int i = 0; i < num; i++)
   {
     sizes[i]++;
-    if((i % 3) == 0)
+    if ((i % 3) == 0)
     {
+      println("red");
       _particleColor = #FF0000;
+      // particleColor[i] = #FF0000;
     }
-    if((i % 3) == 1)
+    if ((i % 3) == 1)
     {
+      println("green");
       _particleColor = #00FF00;
+      // particleColor[i] = #00FF00;
     }
-    if((i % 3) == 2)
+    if ((i % 3) == 2)
     {
+      println("blue");
       _particleColor = #0000FF;
-    }
-    else
+      // particleColor[i] = #0000FF;
+    } else
     {
-      _particleColor = 255;
+      _particleColor = #000000;
+      // particleColor[i] = #000000;
     }
-    particle[i] = new Particle(x[i], y[i], random(10, 25), random(255), random(255), random(255));
+    particle[i] = new Particle(x[i], y[i], random(10, 55), random(255), random(255), random(255));
+    // particle[i] = new Particle(x[i], y[i], random(10, 55), _particleColor);
+    // particle[i] = new Particle(x[i], y[i], random(10, 55), particleColor[i]);
   }
   /*
   for(int i =0; i< sizes.length - 1; i++)
@@ -99,6 +109,7 @@ void draw()
   for (int i = 0; i < num - 1; i++)
   {
     int pos = indexPosition + i;
+    // fill(_particleColor);
     // ellipse(x[i], y[i], randomSize, randomSize);
     //ellipse(x[i], y[i], sizes[i], sizes[i]);
     // ellipse(x[pos], y[pos], size, size);
